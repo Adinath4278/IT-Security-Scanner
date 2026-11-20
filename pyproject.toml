@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools==75.6.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "it-security-scanner"
+version = "0.1.0"
+description = "Windows desktop utility for local static security scanning"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "customtkinter==5.2.2",
+    "darkdetect==0.8.0",
+    "packaging==24.2",
+    "pefile==2024.8.26",
+    "yara-python==4.5.4",
+]
+
+[project.optional-dependencies]
+credentials = ["keyring==25.5.0"]
+build = ["pyinstaller==6.17.0"]
+
+[tool.setuptools]
+py-modules = [
+    "app_state",
+    "main",
+    "pe_analyzer",
+    "report",
+    "report_generator",
+    "reputation",
+    "scanner",
+    "startup_scanner",
+    "threat_database",
+    "threat_intelligence",
+    "ui",
+    "utils",
+    "virustotal",
+    "vulnerability_assessment",
+    "yara_scanner",
+    "version",
+]
+
+[tool.setuptools.data-files]
+"." = ["known_threats.txt"]
+"yara_rules" = ["yara_rules/*.yar", "yara_rules/*.yara"]
